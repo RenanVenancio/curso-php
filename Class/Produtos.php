@@ -1,14 +1,14 @@
 <?php
 
 class Produtos{
-    
+
     private $idProd;
     private $nomeProd;
     private $precoCompra;
     private $precoVenda;
     private $uniMedida;
-    
-    
+
+
     	public function getIdProd(){
 		return $this->idProd;
 	}
@@ -48,36 +48,36 @@ class Produtos{
 	public function setUniMedida($uniMedida){
 		$this->uniMedida = $uniMedida;
 	}
-    
-    
+
+
     public function __toString(){
         return json_encode(array(
         "id_prod" => $this->getIdProd(),
         "nome_prod" => $this->getNomeProd(),
-        "preco_compra" => $this->getPrecoCompra(),    
+        "preco_compra" => $this->getPrecoCompra(),
         "preco_venda" => $this->getPrecoVenda(),
         "unid_medida" => $this->getUniMedida()
         ));
-        
+
     }
-    
+
     public function loadById($id){
         $Sql = new Sql();
-        $results = Sql -> select("SELECT *FROM meus_produtos WHERE id_prod = :ID", array(":ID"=>$id));
-        
+        $results = $Sql -> select("SELECT *FROM meus_produtos WHERE id_prod = :ID", array("ID"=>$id));
+
         if (count($resuts) > 0){
             $row = $results = [0];
-            
+
             $this -> setIdProd($row['id_prod']);
             $this -> setNomeProd($row['nome_prod']);
             $this -> setPrecoCompra($row['preco_compra']);
             $this -> setPrecoVenda($row['preco_venda']);
             $this -> setUniMedida($row['unid_medida']);
         }
-        
+
     }
-    
-    
+
+
 }
 
 
