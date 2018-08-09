@@ -62,8 +62,8 @@ class Produtos{
     }
     
     public function loadById($id){
-        $sql = new Sql();
-        $results = Sql -> select("SELECT *FROM meus_produtos WHERE id_prod = :ID", array("ID"=>$id));
+        $Sql = new Sql();
+        $results = Sql -> select("SELECT *FROM meus_produtos WHERE id_prod = :ID", array(":ID"=>$id));
         
         if (count($resuts) > 0){
             $row = $results = [0];
