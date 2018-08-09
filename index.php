@@ -10,7 +10,7 @@ $usuarios = $sql->select("SELECT * FROM meus_produtos");
 echo json_encode($usuarios);
 */
 $root = new Produtos();
-$root->loadById(6);
+$root->loadById(1);
 echo $root -> getIdProd();
 
 
