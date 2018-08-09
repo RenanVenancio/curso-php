@@ -63,10 +63,11 @@ class Produtos{
 
     public function loadById($id){
         $Sql = new Sql();
-        $results = $Sql -> select("SELECT *FROM meus_produtos WHERE id_prod = :ID", array("ID"=>$id));
+        $results = $Sql -> select("SELECT * FROM meus_produtos WHERE id_prod = :ID", array(":ID"=>$id));
 
-        if (count($resuts) > 0){
-            $row = $results = [0];
+        if (count($results) > 0){
+            $row = $results[0];
+            var_dump($row);
 
             $this -> setIdProd($row['id_prod']);
             $this -> setNomeProd($row['nome_prod']);
