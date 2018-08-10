@@ -19,7 +19,7 @@ $lista = Produtos::getList();
 echo json_encode($lista);
 */
 
-$busca = Produtos::search("ai");
+$busca = Produtos::search("LARANJA");
 echo json_encode($busca);
 
 ?>
