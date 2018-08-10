@@ -16,6 +16,7 @@ class Sql extends PDO{
         foreach ($parameters as $key => $value){
 
             $this -> setParam($statement, $key, $value);
+            echo "Função setParams Chamada ". "key=". $key . "  parameters="; print_r ($parameters); echo "<br>";
         }
 
 
@@ -25,7 +26,7 @@ class Sql extends PDO{
     private function setParam($statement, $key, $value){
 
         $statement -> bindParam($key, $value);
-
+echo "Função setParam Chamada ". "key=". $key . "  parameters="; echo "VALUE=" .$value; echo "<br>";
     }
 
 
@@ -40,10 +41,10 @@ class Sql extends PDO{
     }
 
     public function select($rawQuery, $params = array()){
-
+echo "FAZENDO SELECT Consulta bruta = " . $rawQuery. "Parametros ="; print_r($params); echo "<br>";
         $stmt = $this-> query($rawQuery, $params);
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-         
+
 
     }
 
