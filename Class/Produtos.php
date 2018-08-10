@@ -50,6 +50,11 @@ class Produtos{
 	}
 
 
+  public static function getList(){
+    $Sql = new Sql();
+    return $Sql-> select("SELECT * FROM meus_produtos;");
+  }
+
     public function __toString(){
         return json_encode(array(
         "id_prod" => $this->getIdProd(),
@@ -60,6 +65,13 @@ class Produtos{
         ));
 
     }
+
+    public static function search($nome){
+      $Sql = new Sql();
+      return $Sql -> select("SELECT * FROM meus_produtos WHERE nome_prod LIKE :SEARCH;", array(':SEARCH' => "%".$nome."%"));
+    }
+
+
 
     public function loadById($id){
         $Sql = new Sql();
