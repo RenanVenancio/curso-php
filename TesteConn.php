@@ -1,13 +1,26 @@
 <?php
 
-$db = new PDO("mysql:host=localhost; dbname=base_dados; port=3308;", "root", "");
+class consultas extends PDO{
 
-$stmt = $db -> prepare("SELECT nome_prod FROM meus_produtos WHERE nome_prod LIKE :ID");
+    private $db;
+
+    public function __construct(){   //Essa função é chamada quando a classe é istanciada
+        $db = new PDO("mysql:host=localhost; dbname=base_dados; port=3308;", "root", "");
+    }
+
+    public function consulta($consultaBruta, $parametros = array()){
+        $resultado = this -> db -> prepare($consultaBruta); 
+    }
+
+$stmt = $db -> prepare("SELECT * FROM meus_produtos WHERE nome_prod LIKE :ID ;");
 
 $id = "%a%";
 
-$stmt -> bindParam(":ID", $id);
+$stmt -> bindParam(':ID', $id);
 
 $stmt -> execute();
-var_dump ($stmt);
+$results = $stmt -> fetchAll();
+
+echo  json_encode($results);
+}
 ?>
