@@ -93,6 +93,23 @@ class Produtos{
 
     }
 
+	public function update($nome){
+
+		$this -> setNomeProd($nome);
+
+		$Sql = new Sql();
+		$Sql->query("UPDATE meus_produtos SET nome_prod = :NOME, preco_compra = :COMPRA, preco_venda = :VENDA, unid_medida = :UNID WHERE id_prod = :ID", array(
+			":ID" => $this -> getIdProd(),
+			":NOME" => $this -> getNomeProd(),
+			":COMPRA" => $this -> getPrecoCompra(),
+			":VENDA" => $this -> getPrecoVenda(),
+			":UNID" => $this -> getUniMedida()
+		));
+
+
+	}
+
+
 
 }
 
