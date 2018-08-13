@@ -71,7 +71,10 @@ class Produtos{
       return $Sql -> select("SELECT * FROM meus_produtos WHERE nome_prod LIKE :SEARCH;", array(':SEARCH' => "%".$nome."%"));
     }
 
-
+    public function insert(){
+      $Sql = new Sql();
+      
+    }
 
     public function loadById($id){
         $Sql = new Sql();
