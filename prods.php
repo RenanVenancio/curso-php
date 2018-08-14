@@ -48,8 +48,8 @@ class prods{
 		$this->uniMedida = $uniMedida;
 	}
 
-    public function selectById($id){
-        $sql = new consultas();
+    public function loadById($id){
+        $sql = new Consultas();
         $stmt = $sql -> query("SELECT * FROM meus_produtos WHERE id_prod = :ID;", array(":ID" => $id));
 
         if(count($stmt) > 0){
