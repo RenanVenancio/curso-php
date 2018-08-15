@@ -49,12 +49,12 @@ class prods{
 	}
 
     public function loadById($id){
-        $sql = new Consultas();
-        $stmt = $sql -> query("SELECT * FROM meus_produtos WHERE id_prod = :ID;", array(":ID" => $id));
+        $Sql = new Consultas();
+        $results = $Sql -> select("SELECT * FROM meus_produtos WHERE id_prod = :ID", array(":ID"=>$id));
 
-        if(count($stmt) > 0){
-            echo "TEM RESULTADOS";
-            $row = $stmt[0];
+        if (count($results) > 0){
+            $row = $results[0];
+            var_dump($row);
 
             $this -> setIdProd($row['id_prod']);
             $this -> setNomeProd($row['nome_prod']);
